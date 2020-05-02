@@ -1,0 +1,65 @@
+﻿@using MyEvernote.Entities.ValueObjets;
+@model LoginViewModel
+@{
+    ViewBag.Title = "Giriş Sayfası - MyEvernote";
+}
+
+<!------ Include the above in your HEAD tag ---------->
+<link href="~/Content/login-register.css" rel="stylesheet" />
+<script src="~/Scripts/login-register.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <form role="form">
+                    <fieldset>
+                        <h2>Lütfen Giriş Yapın</h2>
+                        <hr class="colorgraph">
+
+                        @Html.ValidationSummary(false) <!-- True olursa propertilerden (örnek : ViewModel lerden) gelen hata mesajlarını göstermez-->
+
+                        @if (ViewBag.SetLink != null)
+                        {
+                            <a href="@ViewBag.SetLink" class="btn btn-primary">Activate</a>
+                        }
+
+                        <div class="input-group" style="margin-top:5px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                            <input type="text" name="Username" id="usurname" class="form-control input-lg" placeholder="Kullanıcı adı...">
+                        </div>
+
+                        <div class="input-group" style="margin-top:10px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                            <input type="password" name="Password" id="password" class="form-control input-lg" placeholder="Şifre...">
+                        </div>
+                        <span class="button-checkbox">
+                            <button type="button" class="btn" data-color="info" style="margin-top:10px">Hatırla Beni</button>
+                            <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
+                            <a href="" class="btn btn-link pull-right" style="margin-top:10px">Şifremi Unutum?</a>
+                        </span>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <button type="submit" class="btn btn-lg btn-success btn-block"><span class="fa fa-sign-in"></span>Giriş</button>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <a href="/Home/Register" class="btn btn-lg btn-primary btn-block"><span class="fa fa-user-plus"></span>Kayıt Yap</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+}
+
+

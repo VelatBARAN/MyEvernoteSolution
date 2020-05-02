@@ -1,0 +1,50 @@
+﻿@using MyEvernote.Entities
+@model EvernoteUser
+@{
+    ViewBag.Title = "Profiliniz";
+}
+
+
+<div class="container">
+    <div class="row">
+        <h2 style="color:#803b3b">@ViewBag.Title</h2>
+        <hr />
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/Images/@Model.ProfileImageFile" class="img-circle img-responsive" width="128" height="128" />
+        </div>
+        <div class="col-md-8">
+            <h3 style="color:#803b3b">@(Model.Name + " " + Model.Surname)</h3>
+            <br />
+            <h5 style="color:#803b3b"><b>@Html.DisplayNameFor(model => model.Usurname) : </b>@Model.Usurname</h5>
+            <h5 style="color:#803b3b"><b>@Html.DisplayNameFor(model => model.Email) : </b>@Model.Email</h5>
+            <br />
+            <h5 style="color:#2db713"><a href="#">More...</a></h5>
+        </div>
+        @* Eğer  dropdown-toggle açılır menü açılmazsa bootstarp ve jquery .js ve .css dosyalarına bakmak gerekir*@
+        <div class="col-md-2 text-right">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                    <span class="glyphicon glyphicon-cog">&nbsp;</span>
+                    Seçenekler
+                    <span class="icon-cog icon-white"></span><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="@Url.Action("EditProfile")" title="Düzenle">
+                            <span class="glyphicon glyphicon-edit">&nbsp;</span>Düzenle
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("DeleteProfile")" title="Sil" onclick="return confirm('Hesabınızi silmek istediğinize emin misiniz?')">
+                            <span class="glyphicon glyphicon-remove">&nbsp;</span>Sil
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

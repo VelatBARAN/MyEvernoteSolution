@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        @*Kategoriler*@
+
+        @Html.Partial("_PartialCategories");
+
+        <div class="col-md-7 col-md-offset-1">
+            <!-- Notlar -->
+            <div class="row">
+
+                <h2 class="text-center">
+                    Mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+                </h2>
+                <hr />
+                <img src="http://placehold.it/500x200" class="img-responsive img-rounded img-thumbnail center-block">
+                <hr />
+                <p class="text-justify">Ipsum gravida vel pretium tellus tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut.</p>
+                <p class="text-justify">Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor.</p>
+                <p class="text-justify">Mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.</p>
+                <p class="text-justify">Velit mollis odio sollicitudin lacinia aliquam posuere, sapien elementum lobortis tincidunt, turpis dui ornare nisl, sollicitudin interdum turpis nunc eget sem nulla eu ultricies orci.</p>
+                <p class="text-justify">Praesent id augue nec lorem pretium congue sit amet ac nunc fusce iaculis lorem eu diam hendrerit at mattis purus dignissim vivamus mauris tellus, fringilla.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section footer{
+    @Html.Partial("_PartialFooter")
+}

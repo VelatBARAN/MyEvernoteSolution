@@ -1,0 +1,74 @@
+﻿@using MyEvernote.Entities.ValueObjets
+@model RegisterViewModel
+@{
+    ViewBag.Title = "Kayıt Sayfası - MyEvernote";
+}
+
+<!------ Include the above in your HEAD tag ---------->
+<link href="~/Content/login-register.css" rel="stylesheet" />
+<script src="~/Scripts/login-register.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+
+        <div class="row" style="margin-top:20px">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+                <form role="form">
+                    <fieldset>
+                        <h2>Kayıt Formu</h2>
+                        <hr class="colorgraph">
+
+                        @Html.ValidationSummary(false) <!-- True olursa propertilerden (örnek : ViewModel lerden) gelen hata mesajlarını göstermez-->
+
+                        <div class="input-group" style="margin-top:5px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                            <input type="text" name="Name" id="Name" class="form-control input-lg" placeholder="Adınız...">
+                        </div>
+                        <div class="input-group" style="margin-top:10px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                            <input type="text" name="Surname" id="Surname" class="form-control input-lg" placeholder="Soyadınız...">
+                        </div>
+                        <div class="input-group" style=" ">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                            <input type="text" name="Username" id="Username" class="form-control input-lg" placeholder="Kullanıcı adınız...">
+                        </div>
+                        <div class="input-group" style="margin-top:10px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+                            @*@Html.TextBoxFor(model => model.Email , new  { @class = "form-control input-lg" , placeholder = "Email adresiniz..." })*@
+                            <input type="email" name="Email" id="Email" class="form-control input-lg" placeholder="Email adresiniz...">
+                        </div>
+                        <div class="input-group" style="margin-top:10px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                            <input type="password" name="Password" id="Password" class="form-control input-lg" placeholder="Şifre...">
+                        </div>
+
+                        <div class="input-group" style="margin-top:10px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                            <input type="password" name="RePassword" id="RePassword" class="form-control input-lg" placeholder="Tekrar şifre...">
+                        </div>
+
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <button type="submit" class="btn btn-lg btn-success btn-block"><span class="fa fa-user"></span>Kayıt Ol</button>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <a href="/Home/Login" class="btn btn-lg btn-danger btn-block"><span class="fa fa-remove"></span>İptal</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+}
+
+

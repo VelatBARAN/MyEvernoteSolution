@@ -1,0 +1,91 @@
+﻿@model MyEvernote.Entities.Note
+
+@{
+    ViewBag.Title = "Not Detay";
+}
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>Not Detay</h3>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Text)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Text)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsDraft)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsDraft)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LikeCount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LikeCount)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreateOn)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreateOn)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedOn)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ModifiedOn)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedUsurname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ModifiedUsurname)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <a href="/Note/Edit/@Model.Id" title="Düzenle" class="btn btn-warning">
+                <span class="glyphicon glyphicon-edit">&nbsp;</span>Düzenle
+            </a>
+            <a href="/Note/Index" class="btn btn-default"> <span class="glyphicon glyphicon-arrow-left"></span> Geri Dön</a>
+        </div>
+
+    </div>
+

@@ -1,0 +1,126 @@
+﻿@model IEnumerable<MyEvernote.Entities.EvernoteUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h3>Kullanıcılar</h3>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            <p>
+                @Bootstrap.LinkButton("/EvernoteUser/Create", "info", "btn-sm", "Yeni Kullanıcı", "plus", "Yeni Kullanıcı")               
+            </p>
+
+            <table class="table table-striped table-bordered table-responsive table-hover">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usurname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsAdmin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreateOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedUsurname)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usurname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsAdmin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedUsurname)
+                        </td>
+                        <td>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+
+                            <div class="col-md-2 text-right">
+                                <div class="btn-group">
+                                    <a class="btn dropdown-toggle btn-success" data-toggle="dropdown" href="#">
+                                        <span class="glyphicon glyphicon-cog">&nbsp;</span>
+                                        Seçenekler
+                                        <span class="icon-cog icon-white"></span><span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/EvernoteUser/Edit/@item.Id" title="Düzenle">
+                                                <span class="glyphicon glyphicon-edit">&nbsp;</span>Düzenle
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/EvernoteUser/Details/@item.Id" title="Detay">
+                                                <span class="glyphicon glyphicon-dashboard">&nbsp;</span>Detay
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/EvernoteUser/Delete/@item.Id" title="Sil" onclick="return confirm('Hesabınızi silmek istediğinize emin misiniz?')">
+                                                <span class="glyphicon glyphicon-remove">&nbsp;</span>Sil
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>

@@ -1,0 +1,89 @@
+﻿@using MyEvernote.Entities
+@using MyEvernote.WebApp.Models
+@model List<Comment>
+
+@{
+    EvernoteUser user = CurrentSession.User;
+}
+
+
+@foreach (Comment item in Model)
+{
+    <div class="media">
+        <div class="media-left media-heading ">
+            <div class="media-object">
+                <span class="glyphicon glyphicon-comment"></span>
+
+            </div>
+        </div>
+        <div class="media-body">
+            <div>
+                <!--sayfa ilk yüklendiğinde false gelerek içeriği güncellememize engel olur-->
+                <span class="col-md-9" id="span_comment_text_@item.Id" contenteditable="false">
+                    @item.Text
+                </span>
+
+                @if (user != null && user.Id == item.Owner.Id)
+                {
+                    <span class="col-md-3 text-right">
+                        <!--1 kere tıkladığında true yapılarak edit->ok ve warning-> success yapılır-->
+                        <button type="button" class="btn btn-warning btn-xs" title="Güncelle" data-edit-mode="false"
+                                onclick="doComment(this,'edit_clicked',@item.Id,'#span_comment_text_@item.Id')">
+                            <span class="glyphicon glyphicon-edit btn-xs"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" title="Sil" onclick="doComment(this,'delete_clicked',@item.Id,null)">
+                            <span class="glyphicon glyphicon-trash btn-xs"></span>
+                        </button>
+                    </span>
+                }
+
+                <small class="col-md-12 text-right">
+                    <span class="glyphicon glyphicon-time"></span>@item.ModifiedOn&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-user"></span>@item.Owner.Usurname
+                </small>
+
+            </div>
+        </div>
+    </div>
+}
+
+@if (user != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-lg-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="new_comment_text_id" placeholder="yorumunuz...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="button" onclick="doComment (this, 'new_clicked',-1);">
+                            <span class="glyphicon glyphicon-send"></span>Gönder
+                        </button>
+                    </span>
+                </div><!-- /input-group -->
+            </div>
+        </div>
+    </div>
+
+    @*<div class="row">
+            <div class="col-md-12">
+                <div class="col-lg-10">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="yorumunuz..." id="new_comment_text_id">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="button" onclick="doComment(this,'new_clicked',-1,null)">
+                                <span class="glyphicon glyphicon-send"></span> Gönder
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+}
+
+

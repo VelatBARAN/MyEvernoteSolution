@@ -1,0 +1,54 @@
+﻿@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Kategori Güncelle";
+}
+
+    <link href="~/Content/validation-summary.css" rel="stylesheet" />
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>Kategori Güncelle</h3>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            @using (Html.BeginForm("Edit","Category",FormMethod.Post,new { @enctype = "multipart/form-data"}))
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(false)
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-floppy-save"></span>Güncelle</button>
+                        @*@Html.ActionLink("Geri Dön", "Index", "Category", null, new { @class = "btn btn-default" })*@
+                        <a href="/Category/Index" class="btn btn-default"> <span class="glyphicon glyphicon-arrow-left"></span> Geri Dön</a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
